@@ -57,12 +57,11 @@ The static bundle uses relative asset paths, so it also works in a GitHub Pages 
 
 ## Source structure
 
-- `app/LnurlTool.tsx` โ€” interactive one-page interface
-- `app/lib/lightningAddress.ts` โ€” LUD-16 address parsing and mapping
-- `app/lib/lnurl.ts` โ€” Bech32 LNURL encoding and decoding
-- `app/lib/verify.ts` โ€” optional LUD-06 response validation
-- `app/globals.css` โ€” responsive visual design
-- `tests/lnurl.test.mjs` โ€” protocol-focused automated tests
-- `static/` and `vite.static.config.ts` โ€” ordinary-hosting static entry point
-- `static-dist/` โ€” generated upload-ready static files
-
+- `app/LnurlTool.tsx` — interactive one-page interface
+- `app/lib/lightningAddress.ts` — LUD-16 address parsing and mapping
+- `app/lib/lnurl.ts` — Bech32 LNURL encoding and decoding
+- `app/lib/verify.ts` — optional LUD-06 response validation
+- `app/globals.css` — responsive visual design
+- `tests/lnurl.test.mjs` — protocol-focused automated tests
+- `static/` and `vite.static.config.ts` — ordinary-hosting static entry point
+- `static-dist/` — generated upload-ready static files
