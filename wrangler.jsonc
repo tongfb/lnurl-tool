@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "zapm-ln-tools",
+  "compatibility_date": "2026-08-25",
+  "routes": [
+    {
+      "pattern": "zapm.uk/lntool",
+      "zone_name": "zapm.uk"
+    },
+    {
+      "pattern": "zapm.uk/lntool/*",
+      "zone_name": "zapm.uk"
+    }
+  ],
+  "assets": {
+    "directory": "./cloudflare-dist",
+    "html_handling": "auto-trailing-slash"
+  }
+}
