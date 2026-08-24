@@ -1,8 +1,10 @@
-# LNURL TOOL
+# ZAPM LN Tools
 
-LNURL TOOL is a provider-agnostic browser utility for converting between Lightning Addresses, reusable LNURL-pay HTTPS endpoints, traditional Bech32 LNURLs, and high-resolution QR codes.
+Open-source Lightning Address and LNURL toolkit by HereTong.
 
-All encoding, decoding, and QR generation happen locally. The only network request initiated by the interface is the optional endpoint check after the user presses **Verify LNURL-pay endpoint**. The verifier never calls the callback and never requests an invoice.
+ZAPM LN Tools is a local-first, provider-agnostic browser utility for converting between Lightning Addresses, reusable LNURL-pay HTTPS endpoints, Bech32 LNURLs, and high-resolution QR codes.
+
+All encoding, decoding, and QR generation happen locally in the visitor's browser. The only network request initiated by the interface is the optional endpoint check after the user presses **Verify LNURL-pay endpoint**. The verifier never calls the callback and never requests an invoice.
 
 ## How the mapping works
 
@@ -18,7 +20,13 @@ maps to the LUD-06 endpoint:
 https://example.com/.well-known/lnurlp/tong
 ```
 
-The UTF-8 bytes of that HTTPS URL are converted to five-bit words and encoded with standard Bech32 using the `lnurl` human-readable prefix. LNURL does not use Bech32m. The resulting `lnurl1...` value is the QR payload.
+The UTF-8 bytes of that HTTPS URL are converted to five-bit words and encoded with standard Bech32 using the `lnurl` human-readable prefix. LNURL does not use Bech32m. The resulting `lnurl1...` value can be used as the QR payload.
+
+## Why control your own domain?
+
+When you control the domain and keep the same LNURL-pay endpoint, you can change the wallet, Lightning service, or node behind it without changing the public QR.
+
+The QR remains usable only while the domain, DNS, HTTPS, and LNURL-pay endpoint remain available.
 
 ## Local development
 
@@ -47,13 +55,13 @@ The application has no database, authentication, cookies, analytics, or server-s
 
 For Sites, deploy the validated `dist/` build through the project publishing flow.
 
-For ordinary hosting such as DirectAdmin, run `npm run build:static`, then upload the **contents** of `static-dist/` to:
+For ordinary static hosting, run `npm run build:static`, then publish the **contents** of `static-dist/` to the path of your choice.
 
-```text
-public_html/lnurl/
-```
+The static bundle uses relative asset paths, so it can run from a repository subdirectory or a nested path such as `/lntool/`. No Node.js, PHP, database, or server-side application is needed after upload.
 
-The static bundle uses relative asset paths, so it also works in a GitHub Pages repository subdirectory. No Node.js, PHP, database, or server-side application is needed after upload.
+## Forking and reuse
+
+ZAPM LN Tools is designed to remain provider-agnostic and easy to fork. The Lightning conversion logic is not tied to `zapm.uk` or to a specific wallet provider. A fork can change branding, examples, copy, and deployment location while keeping the protocol logic intact.
 
 ## Source structure
 
@@ -63,5 +71,11 @@ The static bundle uses relative asset paths, so it also works in a GitHub Pages 
 - `app/lib/verify.ts` — optional LUD-06 response validation
 - `app/globals.css` — responsive visual design
 - `tests/lnurl.test.mjs` — protocol-focused automated tests
-- `static/` and `vite.static.config.ts` — ordinary-hosting static entry point
+- `static/` and `vite.static.config.ts` — static entry point and build configuration
 - `static-dist/` — generated upload-ready static files
+
+## Credits
+
+ZAPM LN Tools — by HereTong
+
+Built on open standards including LUD-06, LUD-16, and Bech32.
