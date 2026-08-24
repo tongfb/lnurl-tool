@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "build:static": "vite build --config vite.static.config.ts",
+    "build:cloudflare": "vite build --config vite.cloudflare.config.ts",
     "start": "vinext start",
     "test": "node --test tests/lnurl.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
