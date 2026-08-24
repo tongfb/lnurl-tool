@@ -94,14 +94,14 @@ export default function LnurlTool() {
   return (
     <main>
       <nav className="topbar" aria-label="Primary navigation">
-        <a className="brand" href="#top" aria-label="LNURL Tool home"><span className="bolt">ϟ</span> LNURL <b>TOOL</b></a>
+        <a className="brand" href="#top" aria-label="ZAPM LN Tools home"><span className="bolt">ϟ</span> ZAPM LN <b>TOOLS</b> · by HereTong</a>
         <a className="nav-link" href="#learn">How it works <span>→</span></a>
       </nav>
 
       <section className="hero" id="top">
-        <div className="eyebrow"><i /> OPEN PROTOCOL · LOCAL BY DEFAULT</div>
-        <h1>One address.<br /><em>Every Lightning wallet.</em></h1>
-        <p className="lede">Convert a Lightning Address to its LNURL-pay endpoint, encode it as Bech32, and create a wallet-ready QR — all in your browser.</p>
+        <div className="eyebrow"><i /> OPEN STANDARD · LOCAL-FIRST · PROVIDER-AGNOSTIC</div>
+        <h1>One address.<br /><em>One QR. Your Lightning path.</em></h1>
+        <p className="lede">Turn a Lightning Address into its LNURL-pay endpoint, Bech32 LNURL, and scannable QR. Everything is generated locally in your browser.</p>
       </section>
 
       <section className="tool-shell" aria-label="LNURL converter">
@@ -121,7 +121,7 @@ export default function LnurlTool() {
               <input id="source" value={input} onChange={(event) => { setInput(event.target.value); setVerification(null); }} placeholder={placeholder} autoCapitalize="none" autoCorrect="off" spellCheck={false} />
               {input && <button className="clear" onClick={() => { setInput(""); setVerification(null); }} aria-label="Clear input">×</button>}
             </div>
-            {conversion.error ? <p className="error" role="alert">{conversion.error}</p> : <p className="hint">Processed locally. Nothing leaves your browser.</p>}
+            {conversion.error ? <p className="error" role="alert">{conversion.error}</p> : <p className="hint">Conversion happens locally in your browser.</p>}
             {!input && <button className="sample" onClick={() => setInput(mode === "lnurl" ? encodeLnurl("https://example.com/.well-known/lnurlp/tong") : samples[mode])}>Try an example <span>↗</span></button>}
           </div>
 
@@ -149,31 +149,31 @@ export default function LnurlTool() {
       </section>
 
       <section className="trust-strip">
-        <div><span>◎</span><p><b>100% local conversion</b>No data uploaded</p></div>
-        <div><span>◇</span><p><b>Open protocol</b>Provider-agnostic</p></div>
-        <div><span>⌁</span><p><b>Wallet-ready</b>Standard Bech32 LNURL</p></div>
+        <div><span>◎</span><p><b>Local-first</b>Encoding, decoding & QR generation stay in your browser</p></div>
+        <div><span>◇</span><p><b>Provider-agnostic</b>No dependency on a specific Lightning provider</p></div>
+        <div><span>⌁</span><p><b>Open standard</b>Built around LNURL, LUD-06, LUD-16 & Bech32</p></div>
       </section>
 
       <section className="learn" id="learn">
-        <div className="section-copy"><span className="kicker">HOW IT WORKS</span><h2>A small address.<br />A dependable path.</h2><p>A Lightning Address is a human-readable pointer to a domain-controlled LNURL-pay endpoint. That endpoint is encoded into the QR — not a wallet provider.</p></div>
+        <div className="section-copy"><span className="kicker">HOW IT WORKS</span><h2>From address.<br />To endpoint. To QR.</h2><p>A Lightning Address maps to an HTTPS LNURL-pay endpoint on its domain. ZAPM LN Tools turns that endpoint into a Bech32 LNURL and QR that compatible Lightning wallets can read.</p></div>
         <div className="flow">
-          <FlowItem number="01" title="Public identity" value="tong@example.com" />
+          <FlowItem number="01" title="Lightning identity" value="tong@example.com" />
           <FlowItem number="02" title="Stable endpoint" value="example.com/.well-known/lnurlp/tong" />
           <FlowItem number="03" title="Bech32 + QR" value="lnurl1dp68gurn8ghj7…" />
         </div>
       </section>
 
       <section className="domain-section">
-        <div><span className="kicker">WHY YOUR OWN DOMAIN?</span><h2>Keep the address.<br /><em>Change the engine.</em></h2></div>
-        <div className="domain-copy"><p>Your public QR can stay the same while the backend changes between a wallet, Lightning service, or self-hosted node — provided the domain and endpoint remain unchanged.</p><p>This is not a guarantee of permanent availability. Your domain, DNS, HTTPS, and endpoint must continue to operate.</p></div>
+        <div><span className="kicker">WHY CONTROL YOUR OWN DOMAIN?</span><h2>Own the path.<br /><em>Keep the QR.</em></h2></div>
+        <div className="domain-copy"><p>When you control the domain and keep the same LNURL-pay endpoint, you can change the wallet, Lightning service, or node behind it without changing the public QR.</p><p>The QR remains usable only while your domain, DNS, HTTPS, and LNURL-pay endpoint remain available.</p></div>
       </section>
 
       <section className="safety">
-        <div><span>◉</span><p><b>Privacy by design</b>Encoding, decoding, and QR generation happen locally. Verification contacts the endpoint only when you press Verify.</p></div>
+        <div><span>◉</span><p><b>Local by design</b>Encoding, decoding, and QR generation happen locally. Verification contacts the endpoint only when you press Verify.</p></div>
         <div><span>!</span><p><b>Keep secrets secret</b>Never enter a seed phrase, recovery phrase, private key, or wallet password into this tool.</p></div>
       </section>
 
-      <footer><a className="brand" href="#top"><span className="bolt">ϟ</span> LNURL <b>TOOL</b></a><p>Built on open standards · LUD-06 · LUD-16 · Bech32</p><p>No cookies. No analytics. No tracking.</p></footer>
+      <footer><a className="brand" href="#top"><span className="bolt">ϟ</span> ZAPM LN <b>TOOLS</b> · by HereTong</a><p>Built on open standards · LUD-06 · LUD-16 · Bech32</p><p>No cookies. No analytics. No tracking.</p></footer>
     </main>
   );
 }
